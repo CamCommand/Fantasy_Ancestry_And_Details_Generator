@@ -92,13 +92,19 @@ def get_NPC():
 	gender_result = random.choices(gender_elements, weights=weight_elements4, k=1)	# Adds gender
 	clothes_result = random.choices(clothes_elements, weights=weight_elements5, k=1)# Adds clothes
 	
-	NPC_final = "A ", age_result, detail_result, heritage_result, " who is a ", gender_result, ' that is ', clothes_result
+	NPC_final = "A ", age_result, ' ', detail_result, ' ', heritage_result, " who is a ", gender_result, ' that is ', clothes_result
+	#NPC_final = ' '.join(NPC_final)
 	npc_listbox.insert(tk.END, heritage_result, age_result, detail_result, gender_result, clothes_result, '________________________ \n')  # Display task in the listbox
 	print(NPC_final)
 
+def clear():
+	npc_listbox.delete(0,'end')
+
 add_button = tk.Button(root, text="Generate NPC", command=get_NPC)  # Button to add npc
-add_button.pack()  # Display the button
 add_button.pack(pady=10)
+
+add_button2 = tk.Button(root, text="Clear", command=clear)  # Button to add npc
+add_button2.pack(pady=10)
 
 npc_listbox = tk.Listbox(root, width=60, height=315)  # Listbox to display npc
 npc_listbox.pack(pady=10)  # Add spacing around the listbox
